@@ -6,10 +6,10 @@ if nargin<3
     with_field=0;
 end
 if with_correlation
-    corr=eye(N);
-else
     corr=rand(N,N);
     corr=corr*corr';
+else 
+    corr=eye(N);
 end
 J=triu(mvnrnd_(zeros(1,N),corr,N));
 J=J-diag(diag(J));

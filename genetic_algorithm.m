@@ -3,11 +3,11 @@ v=size(J,1);
 S=(randi(2,population_size,v)-1)*2-1;
 best_fitness=inf;
 best_solution=S(1,:);
-t0 = clock;
 subset=find_correlative_subset(J,floor(v/2));
 set1=find(subset);
 set2=find(1-subset);
 parent_choices=nchoosek(1:ceil(population_size/2),2);
+t0 = clock;
 while etime(clock, t0) < time
     fitness=zeros(1,size(S,1));
     for j=1:size(S,1)
@@ -32,7 +32,8 @@ end
 function child=recombine(first_parent,second_parent,set1,set2,J,H)
 child1=zeros(1,length(first_parent));
 child1(set1)=first_parent(set1);
-child2(set2)=second_parent(set2);
+child1(set2)=second_parent(set2);
+child2=zeros(1,length(first_parent));
 child2(set1)=second_parent(set1);
 child2(set2)=first_parent(set2);
 val1=get_value(J,H,child1);

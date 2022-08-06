@@ -1,7 +1,7 @@
 algorithms={'greedy','recursive','genetic','hill climbing', 'hill climbing with random skips', 'simulated annealing', 'greedy + hill climbing', 'random'};
 columns=[{'size'} algorithms];
-sizes=2.^(6:10);
-loops=[1000,1000,500,100,10];
+sizes=2.^(6:11);
+loops=[1000,1000,500,100,10,10];
 winners=zeros(length(sizes),length(algorithms));
 single_winners=zeros(length(sizes),length(algorithms));
 errors=zeros(length(sizes),length(algorithms));
@@ -12,9 +12,9 @@ for i=1:length(sizes)
     [winners(i,:),single_winners(i,:),errors(i,:)]=compare_algorithms(sizes(i),loops(i),mod((j-1),2),floor((j-1)/2));
 end
 toc
-write_csv(winners,columns,['winners' num2str(j) '.csv']);
-write_csv(single_winners,columns,['single_winners' num2str(j) '.csv']);
-write_csv(errors,columns,['errors' num2str(j) '.csv']);
+write_csv([sizes' winners],columns,['winners_' num2str(j) '.csv']);
+write_csv([sizes' single_winners],columns,['single_winners_' num2str(j) '.csv']);
+write_csv([sizes' errors],columns,['errors_' num2str(j) '.csv']);
 end
 disp('Running sanity check');
 tic
