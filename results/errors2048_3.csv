@@ -1,0 +1,2 @@
+size,greedy,recursive,genetic,hill climbing,hill climbing with random skips,simulated annealing,greedy + hill climbing,random
+2048,0.000209818282910184,0.0115490508876204,0.194387451673095,0.0055906887832331,0.0918798905766822,0.0913535619266401,0,0.987316924257398
